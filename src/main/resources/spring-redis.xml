@@ -31,7 +31,7 @@
         <constructor-arg index="0" ref="jedisPoolConfig" />
     </bean>
 
-    <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="jedisConnectionFactory" />
     </bean>
 

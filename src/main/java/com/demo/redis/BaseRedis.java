@@ -1,14 +1,18 @@
 package com.demo.redis;
 
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 import redis.clients.jedis.JedisPool;
+
+import javax.annotation.Resource;
 
 /**
  * Created by shuoshuo on 2017/9/9.
  */
 public class BaseRedis {
+    @Resource
     private JedisPool pool;
-    private StringRedisTemplate template;
+    @Resource
+    private RedisTemplate template;
 
     public JedisPool getPool() {
         return pool;
@@ -18,11 +22,11 @@ public class BaseRedis {
         this.pool = pool;
     }
 
-    public StringRedisTemplate getTemplate() {
+    public RedisTemplate getTemplate() {
         return template;
     }
 
-    public void setTemplate(StringRedisTemplate template) {
+    public void setTemplate(RedisTemplate template) {
         this.template = template;
     }
 }
