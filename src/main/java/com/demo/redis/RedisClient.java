@@ -2,6 +2,7 @@ package com.demo.redis;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -13,7 +14,7 @@ import redis.clients.jedis.JedisPool;
 public class RedisClient extends BaseRedis {
     private static final Logger logger = LoggerFactory.getLogger(RedisClient.class);
     private JedisPool pool;
-    private StringRedisTemplate template;
+    private RedisTemplate template;
 
     public RedisClient() {
         template = getTemplate();
