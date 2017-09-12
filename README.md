@@ -11,9 +11,20 @@ Redis优势：
 3.	原子性 --- 所有操作都是原子性的，且支持多个操作合并后的原子性
 4.	丰富的特性 --- 支持key过期，通知，publish/subscribe
 
+为什么使用Redis:
+nosql的出现，源于数据存储空间与数据访问时间的矛盾。
+传统数据库的存储与访问是集中在一起的。
+即是说，数据存在什么地方，就去什么地方访问。
+集中模式的优点是数据稳定，生命周期长，可靠，强关系，缺点是空间扩展性有限。
+集中模式的代表是关系数据库。
+存储空间的分化，导致写入的分化，实现空间换时间的效果。这种扩展分为两种模式：
+如果横向分离(同一层次，空间分离)，则可实现诸如主从复制、分库分表等效果，使得读写分离，IO提升。
+如果纵向分离(不同层次，过程分离)，则可实现数据库缓存、分布式缓存等效果，也能读写分离，IO提升。
+
 Redis命令：
 运行redis：redis-cli.exe -h 127.0.0.1 -p 6379
 开启客户端： redis-cli -h 127.0.0.1 -p 6379 -a ""
+
 Redis 数据类型
 Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）及zset(sorted set：有序集合)。
 ________________________________________1. String（字符串）
@@ -131,3 +142,11 @@ pom.xml -> 添加redis依赖
 抛出异常一定要用returnBrokenResource返回给pool，不然下次getResource时缓存区还存在数据，出现问题。
 
 JedisPool通过JedisPoolConfig来配置
+
+1)	获取template对象
+2)	利用对象的方法操作jedis
+template.opsForHash();
+template.opsForList();
+template.opsForSet();
+template.opsForValue();
+template.opsForZSet();
